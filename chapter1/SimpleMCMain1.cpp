@@ -8,7 +8,6 @@ using namespace std;
 double GetOneGaussianByBoxMuller()
 {
     double result;
-
     double x;
     double y;
 
@@ -35,7 +34,7 @@ unsigned long NumberOfPaths)
     double sigma_t = sqrt(variance_t);
     double itoCorrection = -0.5*variance_t;
 
-    double nSpot = Spot*exp(r + itoCorrection);
+    double nSpot = Spot*exp(r*Expiry + itoCorrection);
     double Spot_t;
     double runningSum = 0;
     // Sampling from the number of paths
@@ -44,7 +43,7 @@ unsigned long NumberOfPaths)
         double w = GetOneGaussianByBoxMuller();
         // double w = GetOneGaussianBySummation();
 
-        Spot_t = nSpot*exp(sigma_t);
+        Spot_t = nSpot*exp(sigma_t*w);
         double payoff = Spot_t - Strike;
         payoff = (payoff > 0) ? payoff : 0;
         runningSum += payoff;
