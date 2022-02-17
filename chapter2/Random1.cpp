@@ -1,5 +1,5 @@
 // #include <Random1.h>
-#include "Random1.hpp"
+#include "Random1.h"
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
